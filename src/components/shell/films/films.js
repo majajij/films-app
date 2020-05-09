@@ -1,14 +1,13 @@
-import React from 'react'
-import classes from './films.module.scss'
-import Film from './film/film'
+import React from "react";
+import classes from "./films.module.scss";
+import Film from "./film/film";
 
 const Films = () => {
-    return (
-        <div>
-            Films
-            <Film />
-        </div>
-    )
-}
+  return (
+    <div className={classes.films}>
+      <Film />
+    </div>
+  );
+};
 
-export default Films
+export default Films;

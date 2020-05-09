@@ -4,8 +4,7 @@ import Bookmark from "./bookmark/bookmark";
 
 const BookMarks = (props) => {
   return (
-    <div>
-      BookMarks
+    <div className={classes.bookmarks}>
       <Bookmark />
     </div>
   );
