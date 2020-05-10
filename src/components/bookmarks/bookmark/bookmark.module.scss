@@ -1,3 +1,20 @@
 .bookmark {
-    padding: 1rem;
+    padding: 5px;
+    height: 90%;
+    width: 13%;
+    margin: 5px;
+    border-radius: 10px;
+    background-color: grey;
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+.imgFilms{
+    border-radius: 10%;
+    height: 50px;
+    width: 50px;
+    margin-right: 5px;;
+}
+    .bookmarkDetail{
+        height: 50px;
+    }
 }
