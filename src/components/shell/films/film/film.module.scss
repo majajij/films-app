@@ -1,0 +1,22 @@
+.film {
+    width: 16vw;
+    height: 33.3vh;
+    background: #1d1f25;
+    margin: 1rem;
+    transition: all .2s ease-in-out;
+    border-radius: 20px;
+
+
+    &:hover {
+        transform: scale(1.09);
+    }
+
+    .image-header {}
+
+    .card-description {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+    }
+}

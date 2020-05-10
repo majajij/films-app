@@ -7,8 +7,9 @@ const Header = (props) => {
       <nav
         className="navbar"
         style={{
-          backgroundColor: "#24252b",
-          height: "8vh",
+          backgroundColor: "#14151c",
+          zIndex: "5",
+          eight: "8vh",
           boxShadow: "0px 3px 2px 0px #1d1d21a6",
         }}
       >
