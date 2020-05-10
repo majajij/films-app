@@ -13,6 +13,7 @@ let Films = [
     Country: "South Korea",
     Language: "Korean",
     Runtime: "132 min",
+    isFav:true
   },
   {
     name: "Joker",
@@ -28,6 +29,7 @@ let Films = [
     Country: "South Korea",
     Language: "Korean",
     Runtime: "132 min",
+    isFav:true
   },
   {
     name: "Parasite",
@@ -43,6 +45,7 @@ let Films = [
     Country: "South Korea",
     Language: "Korean",
     Runtime: "132 min",
+     isFav:false
   },
   {
     name: "Parasite",
@@ -58,6 +61,7 @@ let Films = [
     Country: "South Korea",
     Language: "Korean",
     Runtime: "132 min",
+     isFav:false
   },
   {
     name: "Parasite",
@@ -73,6 +77,7 @@ let Films = [
     Country: "South Korea",
     Language: "Korean",
     Runtime: "132 min",
+     isFav:false
   },
   {
     name: "Parasite",
@@ -88,6 +93,7 @@ let Films = [
     Country: "South Korea",
     Language: "Korean",
     Runtime: "132 min",
+     isFav:false
   },
   {
     name: "Parasite",
@@ -103,6 +109,7 @@ let Films = [
     Country: "South Korea",
     Language: "Korean",
     Runtime: "132 min",
+     isFav:false
   },
   {
     name: "Parasite",
@@ -118,6 +125,7 @@ let Films = [
     Country: "South Korea",
     Language: "Korean",
     Runtime: "132 min",
+     isFav:false
   },
   {
     name: "Parasite",
@@ -133,6 +141,7 @@ let Films = [
     Country: "South Korea",
     Language: "Korean",
     Runtime: "132 min",
+     isFav:false
   },
   {
     name: "Parasite",
@@ -148,6 +157,7 @@ let Films = [
     Country: "South Korea",
     Language: "Korean",
     Runtime: "132 min",
+     isFav:false
   },
   {
     name: "Parasite",
@@ -163,6 +173,7 @@ let Films = [
     Country: "South Korea",
     Language: "Korean",
     Runtime: "132 min",
+     isFav:false
   },
   {
     name: "Parasite",
@@ -178,6 +189,7 @@ let Films = [
     Country: "South Korea",
     Language: "Korean",
     Runtime: "132 min",
+     isFav:false
   },
   {
     name: "Parasite",
@@ -193,6 +205,7 @@ let Films = [
     Country: "South Korea",
     Language: "Korean",
     Runtime: "132 min",
+     isFav:false
   },
 ];
 
