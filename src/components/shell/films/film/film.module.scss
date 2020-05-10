@@ -6,17 +6,19 @@
     transition: all .2s ease-in-out;
     border-radius: 20px;
 
-
     &:hover {
         transform: scale(1.09);
     }
 
-    .image-header {}
+    .image__header {
+        height: 20vh;
+        width: 100%;
+        border-radius: 20px
+    }
 
     .card-description {
         width: 100%;
         display: flex;
         flex-direction: column;
-
     }
 }

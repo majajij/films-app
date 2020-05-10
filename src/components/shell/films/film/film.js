@@ -5,32 +5,7 @@ const Film = (props) => {
   return (
     <div className={classes.film}>
       <div>
-        <img
-          style={{ height: "20vh", width: "100%", borderRadius: "20px" }}
-          src={props.film.img}
-          className="image-header"
-        ></img>
-        {/* <div class="dropdown ">
-          <button
-            class="btn btn-secondary dropdown-toggle"
-            type="button"
-            id="dropdownMenu2"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          ></button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-            <button class="dropdown-item" type="button">
-              Action
-            </button>
-            <button class="dropdown-item" type="button">
-              Another action
-            </button>
-            <button class="dropdown-item" type="button">
-              Something else here
-            </button>
-          </div>
-        </div> */}
+        <img src={props.film.img} className={classes.image__header}></img>
       </div>
       <div className="card-description p-2">
         <h5 className="p-1">{props.film.name}</h5>

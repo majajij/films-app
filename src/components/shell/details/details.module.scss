@@ -1,15 +1,15 @@
 .details {
     position: absolute;
     background: #1d1f25;
-    top: 7vh;
+    top: 13vh;
     bottom: 11vh;
     right: 0;
-    z-index: 999;
+    z-index: 3;
     width: 30%;
     box-shadow: -4px 1px 6px #00000054;
 
     img {
         width: 100%;
-        height: 50%;
+        height: 40vh;
     }
 }

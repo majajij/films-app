@@ -44,7 +44,7 @@ export default Details;
 const data = {
   name: "Parasite",
   img:
-    "https://cdn2.webmanagercenter.com/wmc/wp-content/uploads/2019/11/cine-film-coreen-parasite.jpg",
+    "https://images-na.ssl-images-amazon.com/images/I/71rNJQ2g-EL._AC_SL1178_.jpg",
   genres: "Comedy | Drama | Thriller",
   releaseDate: "7 February 2020",
   director: "Bong Joon Ho",

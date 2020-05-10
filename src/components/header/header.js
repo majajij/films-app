@@ -1,31 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./header.module.scss";
 
 const Header = (props) => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
     <div>
-      <nav
-        className="navbar"
-        style={{
-          backgroundColor: "#14151c",
-          zIndex: "5",
-          eight: "8vh",
-          boxShadow: "0px 3px 2px 0px #1d1d21a6",
-        }}
-      >
-        <a className="navbar-brand">Films App</a>
+      <nav className={classes.nav}>
+        <a className={classes.app__title}>Films App</a>
         <div className={classes.Actions}>
           <input
-            className="form-control mr-sm-2"
+            className="form-control m-2"
             type="text"
-            placeholder="Search"
+            placeholder="Type somthing ..."
           />
-          <button className="btn btn-outline-success my-2 mx-2 my-sm-0">
-            Search
+          <button className="btn btn-outline-success m-2">Search</button>
+          <button
+            className="btn btn-outline-primary m-2"
+            onClick={() => {
+              setShow(!show);
+            }}
+          >
+            Add
           </button>
-          <button className="btn btn-outline-primary my-2 my-sm-0">Add</button>
         </div>
       </nav>
+      {/* modal add Film */}
+      <div
+        className={show ? classes.modal + " " + classes.visible : classes.modal}
+      >
+        <h2 className={classes.modal__title}>Add new film</h2>
+        <div className={classes.modal__content}>
+          <label>Movie Title</label>
+          <input className="form-control m-2" type="text" />
+          <label>Image URL</label>
+          <input className="form-control m-2" type="text" />
+          <label>Your Rating</label>
+          <input
+            className="form-control m-2"
+            type="number"
+            step="1"
+            max="10"
+            min="1"
+            name="rating"
+          />
+        </div>
+        <div className={classes.modal__actions}>
+          <button className="btn btn-outline" onClick={handleClose}>
+            Cancel
+          </button>
+          <button className="btn btn-outline-success">Add</button>
+        </div>
+      </div>
     </div>
   );
 };
