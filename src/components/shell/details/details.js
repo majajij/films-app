@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./details.module.scss";
+import { FiArrowRight } from "react-icons/fi";
+import Button from "react-bootstrap/Button";
 
 const Details = () => {
+  const [show, setShow] = useState(true);
+  const handleClose = () => setShow(false);
   return (
-    <div className={classes.details}>
+    <div
+      className={
+        show ? classes.details : classes.details + " " + classes.hidden
+      }
+    >
+      <Button className={classes.ArrowRight} onClick={handleClose}>
+        <FiArrowRight />
+      </Button>
       <div>
         <img src={data.img} />
       </div>
-      <div className="card-body">
+      <div className={classes.card_body}>
         <h4 className="card-title">{data.name}</h4>
         <p className="card-text">{data.description}</p>
         <span className="card-text pr-2">

@@ -4,7 +4,6 @@ import classes from "./header.module.scss";
 const Header = (props) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   return (
     <div>
       <nav className={classes.nav}>

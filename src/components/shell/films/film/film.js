@@ -1,9 +1,15 @@
 import React from "react";
 import classes from "./film.module.scss";
+import Badge from "react-bootstrap/Badge";
 
 const Film = (props) => {
   return (
     <div className={classes.film}>
+      {props.film.isFav && (
+        <Badge className={classes.badge} pill variant="warning">
+          Favorite
+        </Badge>
+      )}
       <div>
         <img src={props.film.img} className={classes.image__header}></img>
       </div>
