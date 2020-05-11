@@ -3,9 +3,16 @@ import classes from "./bookmark.module.scss";
 import { FiTrash } from "react-icons/fi";
 import Button from "react-bootstrap/Button";
 const BookMark = (props) => {
+  const deleteItem = () => {
+    props.clickDelete(props.data.id);
+  };
   return (
     <div className={classes.bookmark}>
-      <Button className={classes.button__delete} variant="danger">
+      <Button
+        className={classes.button__delete}
+        variant="danger"
+        onClick={deleteItem}
+      >
         <FiTrash />
       </Button>
       <img className={classes.imgFilms} src={props.data.img}></img>

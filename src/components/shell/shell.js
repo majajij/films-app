@@ -2,15 +2,26 @@ import React, { Component } from "react";
 import classes from "./shell.module.scss";
 import Films from "./films/films";
 import Details from "./details/details";
-import DATA from "../../FakeDb/data";
 class Shell extends Component {
-  render() {
-    console.log("dataa", DATA);
+  state = {
+    selectedFilm: {},
+    isShow: false,
+  };
 
+  render() {
     return (
       <div className={classes.shell}>
-        <Films />
-        <Details />
+        <Films
+          filmClicked={(e) => this.setState({ isShow: true, selectedFilm: e })}
+          filmsList={this.props.filmsList}
+        />
+        <Details
+          show={this.state.isShow}
+          selectedFilm={this.state.selectedFilm}
+          detailsHandler={() =>
+            this.setState({ isShow: false, selectedFilm: {} })
+          }
+        />
       </div>
     );
   }

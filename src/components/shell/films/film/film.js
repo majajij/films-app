@@ -3,8 +3,12 @@ import classes from "./film.module.scss";
 import Badge from "react-bootstrap/Badge";
 
 const Film = (props) => {
+  const divClick = () => {
+    props.clicked(props.film);
+  };
+
   return (
-    <div className={classes.film}>
+    <div className={classes.film} onClick={divClick}>
       {props.film.isFav && (
         <Badge className={classes.badge} pill variant="warning">
           Favorite
