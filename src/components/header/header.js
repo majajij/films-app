@@ -14,7 +14,6 @@ const Header = (props) => {
             type="text"
             placeholder="Type somthing ..."
           />
-          <button className="btn btn-outline-success m-2">Search</button>
           <button
             className="btn btn-outline-primary m-2"
             onClick={() => {

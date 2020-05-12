@@ -1,6 +1,8 @@
 import React from "react";
 import classes from "./film.module.scss";
 import Badge from "react-bootstrap/Badge";
+import { FaBookmark } from "react-icons/fa";
+import { BsBookmarkPlus } from "react-icons/bs";
 
 const Film = (props) => {
   const divClick = () => {
@@ -9,11 +11,12 @@ const Film = (props) => {
 
   return (
     <div className={classes.film} onClick={divClick}>
-      {props.film.isFav && (
-        <Badge className={classes.badge} pill variant="warning">
-          Favorite
-        </Badge>
-      )}
+      {props.film.isFav ? (
+        <FaBookmark className={classes.badge}/>
+      ) :
+        <BsBookmarkPlus className={classes.badge} style={{ color : 'gray' }}/>
+    
+    }
       <div>
         <img src={props.film.img} className={classes.image__header}></img>
       </div>
