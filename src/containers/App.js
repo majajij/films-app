@@ -19,17 +19,13 @@ class App extends Component {
     const newFilm = { ...e, id: Math.random(), isFav: false };
     const dataToSend = [...this.state.films, newFilm];
     this.setState({ films: dataToSend });
-    setTimeout(() => {
-      console.log(this.state.films);
-    }, 3000);
   };
   filmSearchHandler = (e) => {
-    if (e != "") {
+    if (e !== "") {
       const searchInput = e;
       const updatedFilms = this.state.films.filter((f) =>
         f.name.includes(searchInput)
       );
-      console.log(updatedFilms);
       this.setState({ films: updatedFilms });
     } else {
       this.setState({ films: DATA });
