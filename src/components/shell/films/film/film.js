@@ -1,8 +1,10 @@
 import React from "react";
 import classes from "./film.module.scss";
-import Badge from "react-bootstrap/Badge";
-import { FaBookmark } from "react-icons/fa";
-import { BsBookmarkPlus } from "react-icons/bs";
+//import Badge from "react-bootstrap/Badge";
+import { FaBookmark, FaTrash } from "react-icons/fa";
+import { AiFillEdit } from "react-icons/ai";
+import { BsBookmarkPlus, BsFillEyeFill } from "react-icons/bs";
+import Button from "react-bootstrap/Button";
 
 const Film = (props) => {
   const divClick = () => {
@@ -10,7 +12,7 @@ const Film = (props) => {
   };
 
   return (
-    <div className={classes.film} onClick={divClick}>
+    <div className={classes.film}>
       {props.film.isFav ? (
         <FaBookmark className={classes.badge}/>
       ) :
@@ -18,6 +20,26 @@ const Film = (props) => {
     
     }
       <div>
+
+      <div className={classes.button__actions}>
+        <Button className={classes.button__view} onClick={divClick}
+          variant="primary"
+        >
+          <BsFillEyeFill />
+        </Button>
+        <Button className={classes.button__edit}
+          variant="success"
+        >
+          <AiFillEdit />
+        </Button>
+        <Button className={classes.button__delete}
+          variant="danger"
+        >
+          <FaTrash />
+        </Button>
+      </div>
+      
+
         <img src={props.film.img} className={classes.image__header}></img>
       </div>
       <div className="card-description p-2">
