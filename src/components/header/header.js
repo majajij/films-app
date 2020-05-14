@@ -15,7 +15,7 @@ const Header = (props) => {
   return (
     <div>
       <nav className={classes.nav}>
-        <a className={classes.app__title}>Films App</a>
+        <a className={classes.app__title}>filmZapp</a>
         <div className={classes.Actions}>
           <input
             className="form-control m-2"
