@@ -1,3 +1,7 @@
+%button__shared{
+    font-size: 16px;
+    border:none;
+}
 .film {
     width: 16vw;
     height: 33.3vh;
@@ -9,6 +13,9 @@
 
     &:hover {
         transform: scale(1.09);
+        .button__actions{
+            display: block;
+        }
     }
 
     .image__header {
@@ -29,5 +36,31 @@
         right: 5px;
         font-size: 20px;
         color: orange;
+    }
+
+    .button__actions{
+        display: none;
+        position: absolute;
+        bottom: 42%;
+        left: 5px;
+        & > button {
+            margin: 0.4rem;
+        }
+    }
+
+
+    .button__view{
+        @extend %button__shared;
+        background-color: #407294;
+    }
+
+    .button__edit{
+        @extend %button__shared;
+        background-color: #37C8AE;
+    }
+
+    .button__delete{
+        @extend %button__shared;
+        background-color: #FF4040;
     }
 }
