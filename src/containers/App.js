@@ -9,26 +9,35 @@ class App extends Component {
   state = {
     films: DATA,
     selectedFilm: null,
+    favoritFilms: DATA.filter((e) => e.isFav),
+    filtredFilms: DATA,
   };
 
-  filmDeleteFavHandler = (e) => {
-    const updatedFilms = this.state.films.filter((f) => f.id !== e);
-    this.setState({ films: updatedFilms });
+  deleteFavFilmHandler = (e) => {
+    const updatedFilms = this.state.favoritFilms.filter((f) => f.id !== e);
+    this.setState({ favoritFilms: updatedFilms });
   };
   addFilmHandler = (e) => {
-    const newFilm = { ...e, id: Math.random(), isFav: false };
+    const newFilm = {
+      ...e,
+      id: Math.random(),
+      isFav: false,
+      img:
+        e.img !== ""
+          ? e.img
+          : "https://www.meghnaddesaiacademy.org/wp-content/uploads/2019/12/no-image-available.jpg",
+    };
     const dataToSend = [...this.state.films, newFilm];
-    this.setState({ films: dataToSend });
+    this.setState({ films: dataToSend, filtredFilms: dataToSend });
   };
   filmSearchHandler = (e) => {
     if (e !== "") {
-      const searchInput = e;
-      const updatedFilms = this.state.films.filter((f) =>
-        f.name.includes(searchInput)
+      const updatedFilms = this.state.films.filter(
+        (f) => f.name.indexOf(e) != -1
       );
-      this.setState({ films: updatedFilms });
+      this.setState({ filtredFilms: updatedFilms });
     } else {
-      this.setState({ films: DATA });
+      this.setState({ filtredFilms: DATA });
     }
   };
 
@@ -39,10 +48,10 @@ class App extends Component {
           change={this.filmSearchHandler}
           addFilmHandler={this.addFilmHandler}
         />
-        <Shell filmsList={this.state.films} />
+        <Shell filmsList={this.state.filtredFilms} />
         <Bookmarks
-          click={this.filmDeleteFavHandler}
-          filmsList={this.state.films}
+          click={this.deleteFavFilmHandler}
+          filmsList={this.state.favoritFilms}
         />
       </div>
     );

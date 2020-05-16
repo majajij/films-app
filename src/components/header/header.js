@@ -1,17 +1,29 @@
 import React, { useState } from "react";
-import classes from "./header.module.scss";
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
 import { FcAddImage } from "react-icons/fc";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import classes from "./header.module.scss";
+import ModalAdd from "../../shared/modalAddFilm";
 
 const Header = (props) => {
   const [modalShow, setModalShow] = useState(false);
   const shearchHandeler = (e) => props.change(e.target.value);
   const submitHandeler = (e) => props.addFilmHandler(e);
-
+  // const fData = {
+  //   id: Math.random() * 1000000,
+  //   name: "Gangster squad",
+  //   img:
+  //     "http://cdn29.us1.fansshare.com/images/gangstersquad/gangster-squad-ver-xlrg-54313192.jpg",
+  //   genres: "Comedy | Drama | Thriller",
+  //   releaseDate: "7 February 2020",
+  //   director: "Bong Joon Ho",
+  //   description:
+  //     "The Kims - mother and father Chung-sook and Ki-taek, and their young adult offspring, son Ki-woo and daughter Ki-jung - are a poor family living in a shabby and cramped half basement apartment in a busy lower working class commercial district of Seoul",
+  //   ratting: 8.6,
+  //   reviews: 396631,
+  //   Country: "South Korea",
+  //   Language: "Korean",
+  //   Runtime: "132 min",
+  //   isFav: false,
+  // };
   return (
     <div>
       <nav className={classes.nav}>
@@ -28,7 +40,9 @@ const Header = (props) => {
             style={{ fontSize: "3rem", cursor: "pointer" }}
             onClick={() => setModalShow(true)}
           />
-          <MyVerticallyCenteredModal
+          <ModalAdd
+            action="Add"
+            // dataToModify={fData}
             show={modalShow}
             onHide={() => setModalShow(false)}
             onSubmitHandler={submitHandeler}
@@ -40,181 +54,3 @@ const Header = (props) => {
 };
 
 export default Header;
-
-function MyVerticallyCenteredModal(props) {
-  const [formData, setFormData] = useState({
-    name: "",
-    img: "",
-    genres: "",
-    releaseDate: "",
-    director: "",
-    description: "",
-    ratting: "",
-    reviews: "",
-    Country: "",
-    Language: "",
-    Runtime: "",
-  });
-  const handelChangeAdd = (name) => (e) => {
-    setFormData({ ...formData, [name]: e.target.value });
-  };
-  const handelSubmit = (e) => {
-    props.onSubmitHandler(formData);
-    props.onHide();
-  };
-
-  return (
-    <Modal
-      {...props}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Add new Movie
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <div className={classes.modalDiv__content}>
-          <Container>
-            <Row>
-              <Col>
-                <label>Image URL</label>
-                <input
-                  value={formData.img}
-                  onChange={handelChangeAdd("img")}
-                  required
-                  className="form-control m-2"
-                  type="text"
-                />
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <label>Movie Title</label>
-                <input
-                  value={formData.name}
-                  onChange={handelChangeAdd("name")}
-                  required
-                  className="form-control m-2"
-                  type="text"
-                />
-              </Col>
-              <Col>
-                <label>Your Rating</label>
-                <input
-                  className="form-control m-2"
-                  value={formData.ratting}
-                  onChange={handelChangeAdd("ratting")}
-                  required
-                  type="number"
-                  step="1"
-                  max="10"
-                  min="1"
-                  name="rating"
-                />
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <label>Director</label>
-                <input
-                  value={formData.director}
-                  onChange={handelChangeAdd("director")}
-                  required
-                  className="form-control m-2"
-                  type="text"
-                />
-              </Col>
-              <Col>
-                <label>Country</label>
-                <input
-                  value={formData.Country}
-                  onChange={handelChangeAdd("Country")}
-                  required
-                  className="form-control m-2"
-                  type="text"
-                />
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <label>Language</label>
-                <input
-                  value={formData.Language}
-                  onChange={handelChangeAdd("Language")}
-                  required
-                  className="form-control m-2"
-                  type="text"
-                />
-              </Col>
-              <Col>
-                <label>Genres</label>
-                <input
-                  value={formData.genres}
-                  onChange={handelChangeAdd("genres")}
-                  required
-                  className="form-control m-2"
-                  type="text"
-                />
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <label>ReleaseDate</label>
-                <input
-                  value={formData.releaseDate}
-                  onChange={handelChangeAdd("releaseDate")}
-                  required
-                  className="form-control m-2"
-                  type="text"
-                />
-              </Col>
-              <Col>
-                <label>Runtime</label>
-                <input
-                  value={formData.Runtime}
-                  onChange={handelChangeAdd("Runtime")}
-                  required
-                  className="form-control m-2"
-                  type="text"
-                />
-              </Col>
-              <Col>
-                <label>Reviews</label>
-                <input
-                  value={formData.reviews}
-                  onChange={handelChangeAdd("reviews")}
-                  required
-                  className="form-control m-2"
-                  type="text"
-                />
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <label>Description</label>
-                <textarea
-                  value={formData.description}
-                  onChange={handelChangeAdd("description")}
-                  required
-                  className="form-control m-2"
-                  type="text"
-                />
-              </Col>
-            </Row>
-          </Container>
-        </div>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button variant="secondary" onClick={props.onHide}>
-          Close
-        </Button>
-        <Button onClick={handelSubmit} variant="success">
-          Add
-        </Button>
-      </Modal.Footer>
-    </Modal>
-  );
-}

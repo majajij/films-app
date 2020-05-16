@@ -1,19 +1,21 @@
-%button__shared{
+%button__shared {
     font-size: 16px;
-    border:none;
+    border: none;
 }
+
 .film {
     width: 16vw;
     height: 33.3vh;
     background: #1d1f25;
     margin: 1rem;
     transition: all .2s ease-in-out;
-    border-radius: 20px;
+    border-radius: 20px 0 20px;
     position: relative;
 
     &:hover {
         transform: scale(1.09);
-        .button__actions{
+
+        .button__actions {
             display: block;
         }
     }
@@ -38,28 +40,29 @@
         color: orange;
     }
 
-    .button__actions{
+    .button__actions {
         display: none;
         position: absolute;
         bottom: 42%;
         left: 5px;
-        & > button {
+
+        &>button {
             margin: 0.4rem;
         }
     }
 
 
-    .button__view{
+    .button__view {
         @extend %button__shared;
         background-color: #407294;
     }
 
-    .button__edit{
+    .button__edit {
         @extend %button__shared;
         background-color: #37C8AE;
     }
 
-    .button__delete{
+    .button__delete {
         @extend %button__shared;
         background-color: #FF4040;
     }
