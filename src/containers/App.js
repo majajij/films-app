@@ -4,6 +4,7 @@ import Header from "../components/header/header";
 import Bookmarks from "../components/bookmarks/bookmarks";
 import Shell from "../components/shell/shell";
 import DATA from "../FakeDb/data";
+import { FaWindows } from "react-icons/fa";
 
 class App extends Component {
   state = {
@@ -32,6 +33,17 @@ class App extends Component {
     }
   };
 
+  filmDeleteHandler = (e) => {
+    //console.log("Works !",e);
+    const idFIlm = e;
+    const updatedFilms = this.state.films.filter(f => f.id !== idFIlm);
+    //console.log("updated film !",updatedFilms);
+    const PressOK = window.confirm("Are you sure ?!");
+    if(PressOK){
+      this.setState({films: updatedFilms});
+    }
+  }
+
   render() {
     return (
       <div className={calsses.App}>
@@ -39,7 +51,9 @@ class App extends Component {
           change={this.filmSearchHandler}
           addFilmHandler={this.addFilmHandler}
         />
-        <Shell filmsList={this.state.films} />
+        <Shell 
+        filmsList={this.state.films} 
+        deleteFilmClick={this.filmDeleteHandler} />
         <Bookmarks
           click={this.filmDeleteFavHandler}
           filmsList={this.state.films}
