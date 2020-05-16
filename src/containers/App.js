@@ -40,6 +40,15 @@ class App extends Component {
       this.setState({ filtredFilms: DATA });
     }
   };
+  filmDeleteHandler = (e) => {
+    const idFIlm = e;
+    const updatedFilms = this.state.films.filter((f) => f.id !== idFIlm);
+    const PressOK = window.confirm("Are you sure ?!");
+    if (PressOK) {
+      this.setState({ films: updatedFilms });
+      this.setState({ filtredFilms: updatedFilms });
+    }
+  };
 
   render() {
     return (
@@ -48,7 +57,10 @@ class App extends Component {
           change={this.filmSearchHandler}
           addFilmHandler={this.addFilmHandler}
         />
-        <Shell filmsList={this.state.filtredFilms} />
+        <Shell
+          filmsList={this.state.filtredFilms}
+          deleteFilmClick={this.filmDeleteHandler}
+        />
         <Bookmarks
           click={this.deleteFavFilmHandler}
           filmsList={this.state.favoritFilms}

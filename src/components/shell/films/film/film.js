@@ -7,9 +7,15 @@ import { BsBookmarkPlus, BsFillEyeFill } from "react-icons/bs";
 import Button from "react-bootstrap/Button";
 
 const Film = (props) => {
+
   const divClick = () => {
     props.clicked(props.film);
   };
+
+  const deleteClick = (e) => {
+    //console.log(e);
+    props.deleteClicked(props.film.id);
+  }
 
   return (
     <div className={classes.film}>
@@ -32,8 +38,10 @@ const Film = (props) => {
         >
           <AiFillEdit />
         </Button>
-        <Button className={classes.button__delete}
-          variant="danger"
+        <Button 
+        className={classes.button__delete} 
+        onClick={deleteClick}
+        variant="danger"
         >
           <FaTrash />
         </Button>
