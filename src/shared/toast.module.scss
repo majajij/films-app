@@ -1,0 +1,21 @@
+%toast{
+    position: absolute;
+    left: 5%;
+    z-index: 100;
+    color:black;
+}
+
+.toast_success{
+    @extend %toast;
+    background-color:lightseagreen;
+}
+
+.toast_error{
+    @extend %toast;
+    background-color:lightcoral;
+}
+
+.toast_warning{
+    @extend %toast;
+    background-color:sandybrown;
+}

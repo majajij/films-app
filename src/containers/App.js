@@ -4,6 +4,7 @@ import Header from "../components/header/header";
 import Bookmarks from "../components/bookmarks/bookmarks";
 import Shell from "../components/shell/shell";
 import DATA from "../FakeDb/data";
+import ToastAlert from "../shared/toast";
 
 class App extends Component {
   state = {
@@ -11,6 +12,10 @@ class App extends Component {
     selectedFilm: null,
     favoritFilms: DATA.filter((e) => e.isFav),
     filtredFilms: DATA,
+    toast: false,
+    toastMsg: '',
+    toastTitle: '',
+    toastAction: '' //accepted values [Success, Warning, Error]
   };
 
   deleteFavFilmHandler = (e) => {
@@ -43,11 +48,22 @@ class App extends Component {
   filmDeleteHandler = (e) => {
     const idFIlm = e;
     const updatedFilms = this.state.films.filter((f) => f.id !== idFIlm);
-    const PressOK = window.confirm("Are you sure ?!");
-    if (PressOK) {
-      this.setState({ films: updatedFilms });
-      this.setState({ filtredFilms: updatedFilms });
-    }
+    this.setState({ films: updatedFilms });
+    this.setState({ filtredFilms: updatedFilms });
+  };
+
+  editFilmHandler = (e) => {
+    const updateFilm = this.state.films.map((f) => f.id === e.id ? ({...e}) : f );
+    
+    this.setState({
+      filtredFilms: updateFilm,
+      films: updateFilm,
+      favoritFilms: updateFilm.filter((e) => e.isFav),
+      toast: true,
+      toastTitle:'Update',
+      toastMsg: 'Film Updated successfully',
+      toastAction: 'Success'
+    });
   };
 
   render() {
@@ -57,9 +73,19 @@ class App extends Component {
           change={this.filmSearchHandler}
           addFilmHandler={this.addFilmHandler}
         />
+        <ToastAlert
+        open={this.state.toast}
+        close={() => this.setState({
+          toast: false
+        })}
+        title={this.state.toastTitle}
+        msg={this.state.toastMsg}
+        action={this.state.toastAction}
+        />
         <Shell
           filmsList={this.state.filtredFilms}
           deleteFilmClick={this.filmDeleteHandler}
+          editfilmClick={this.editFilmHandler}
         />
         <Bookmarks
           click={this.deleteFavFilmHandler}

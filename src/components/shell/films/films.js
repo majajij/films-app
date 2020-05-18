@@ -8,7 +8,12 @@ const Films = (props) => {
     props.filmClicked(e);
   };*/
   const listFilms = props.filmsList.map((e, i) => (
-    <Film clicked={props.filmClicked} deleteClicked={props.filmDelete} film={e} key={i} />
+    <Film
+      clicked={props.filmClicked}
+      deleteClicked={props.filmDelete}
+      film={e} key={i} 
+      editfilm = {props.editfilmClicked}  
+    />
   ));
   return <div className={classes.films}>{listFilms}</div>;
 };

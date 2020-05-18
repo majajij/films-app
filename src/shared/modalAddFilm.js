@@ -8,6 +8,8 @@ import Col from "react-bootstrap/Col";
 
 function ModalAdd(props) {
   const [formData, setFormData] = useState({
+    id: (props.dataToModify && props.dataToModify.id) || "",
+    isFav: (props.dataToModify && props.dataToModify.isFav) || "",
     name: (props.dataToModify && props.dataToModify.name) || "",
     img: (props.dataToModify && props.dataToModify.img) || "",
     genres: (props.dataToModify && props.dataToModify.genres) || "",
@@ -74,7 +76,7 @@ function ModalAdd(props) {
                   onChange={handelChangeAdd("ratting")}
                   required
                   type="number"
-                  step="1"
+                  step="0.1"
                   max="10"
                   min="1"
                   name="rating"
