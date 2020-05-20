@@ -47,9 +47,11 @@ class App extends Component {
   };
   filmSearchHandler = (e) => {
     if (e !== "") {
-      const updatedFilms = this.state.films.filter(
-        (f) => f.name.indexOf(e) != -1
-      );
+      const searchWord = e;
+      const updatedFilms = this.state.films
+        .map((m) => ({ ...m, name: m.name.toLowerCase() }))
+        .filter((f) => f.name.indexOf(searchWord) != -1)
+        .map((m) => ({ ...m, name: m.name.toUpperCase() }));
       this.setState({ filtredFilms: updatedFilms });
     } else {
       this.setState({ filtredFilms: DATA });

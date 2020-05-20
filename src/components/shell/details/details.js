@@ -1,13 +1,13 @@
 import React from "react";
 import classes from "./details.module.scss";
-import { FiArrowRight } from "react-icons/fi";
+import { IoIosCloseCircle } from "react-icons/io";
 import Button from "react-bootstrap/Button";
 
 const Details = (props) => {
-  const showDetails = props.show ? (
+  return (
     <div className={classes.details}>
       <Button className={classes.ArrowRight} onClick={props.detailsHandler}>
-        <FiArrowRight />
+        <IoIosCloseCircle style={{ color: "white", fontSize: "18px" }} />
       </Button>
       <div>
         <img src={props.selectedFilm.img} />
@@ -41,9 +41,7 @@ const Details = (props) => {
         </span>
       </div>
     </div>
-  ) : null;
-
-  return showDetails;
+  );
 };
 
 export default Details;
