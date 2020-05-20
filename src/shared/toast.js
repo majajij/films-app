@@ -3,18 +3,33 @@ import classes from "./toast.module.scss";
 import Toast from "react-bootstrap/Toast";
 
 function ToastAlert(props) {
+
+  let alertType = "";
+  
+  switch(props.action) {
+    case "Success":
+      alertType = classes.toast_success
+      break;
+    case "Warning":
+      alertType = classes.toast_warning
+      break;
+    case "Eror":
+      alertType = classes.toast_error
+      break;
+  } 
+
+  /*props.action == "Success"
+  ? classes.toast_success
+  : props.action == "Warning"
+  ? classes.toast_warning
+  : classes.toast_error*/
+
   return (
     <Toast
-      className={
-        props.action == "Success"
-          ? classes.toast_success
-          : props.action == "Warning"
-          ? classes.toast_warning
-          : classes.toast_error
-      }
+      className={alertType}
       onClose={props.close}
       show={props.open}
-      delay={5000000000}
+      delay={3000}
       autohide
     >
       <Toast.Header>
