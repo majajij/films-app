@@ -4,5 +4,9 @@
     background-color: #14151d;
     display: flex;
     align-items: center;
-    overflow-x: auto;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }

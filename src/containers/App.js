@@ -74,10 +74,11 @@ class App extends Component {
     this.setState({ filtredFilms: updatedFilms });
   };
   editFilmHandler = (e) => {
+    console.log(e);
+
     const updateFilm = this.state.films.map((f) =>
       f.id === e.id ? { ...e } : f
     );
-
     this.setState({
       filtredFilms: updateFilm,
       films: updateFilm,
@@ -87,15 +88,12 @@ class App extends Component {
       toastMsg: "Film Updated successfully",
       toastAction: "Success",
     });
+    console.log(this.state);
   };
 
   render() {
     return (
       <div className={calsses.App}>
-        <Header
-          change={this.filmSearchHandler}
-          addFilmHandler={this.addFilmHandler}
-        />
         <ToastAlert
           open={this.state.toast}
           close={() =>
@@ -107,6 +105,11 @@ class App extends Component {
           msg={this.state.toastMsg}
           action={this.state.toastAction}
         />
+        <Header
+          change={this.filmSearchHandler}
+          addFilmHandler={this.addFilmHandler}
+        />
+
         <bookMarkFilmContext.Provider
           value={{
             filmsList: this.state.filtredFilms,
