@@ -13,9 +13,6 @@ class Shell extends Component {
       <div className={classes.shell}>
         <Films
           filmClicked={(e) => this.setState({ isShow: true, selectedFilm: e })}
-          filmsList={this.props.filmsList}
-          filmDelete={this.props.deleteFilmClick}
-          editfilmClicked={this.props.editfilmClick}
         />
         <Details
           show={this.state.isShow}

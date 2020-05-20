@@ -6,8 +6,7 @@ import Shell from "../components/shell/shell";
 import DATA from "../FakeDb/data";
 import ToastAlert from "../shared/toast";
 import UpdateContext from "../context/context";
-
-const ThemeContext = React.createContext("light");
+import bookMarkFilmContext from "../context/filmsContext";
 
 class App extends Component {
   state = {
@@ -56,6 +55,18 @@ class App extends Component {
       this.setState({ filtredFilms: DATA });
     }
   };
+  favoritHandler = (e) => {
+    const id = e.idfilm;
+    const action = e.action;
+    const updatedFilms = this.state.films.map((m) =>
+      m.id === id ? { ...m, isFav: action } : { ...m }
+    );
+    this.setState({
+      films: updatedFilms,
+      filtredFilms: updatedFilms,
+      favoritFilms: updatedFilms.filter((e) => e.isFav),
+    });
+  };
   filmDeleteHandler = (e) => {
     const idFIlm = e;
     const updatedFilms = this.state.films.filter((f) => f.id !== idFIlm);
@@ -96,11 +107,17 @@ class App extends Component {
           msg={this.state.toastMsg}
           action={this.state.toastAction}
         />
-        <Shell
-          filmsList={this.state.filtredFilms}
-          deleteFilmClick={this.filmDeleteHandler}
-          editfilmClick={this.editFilmHandler}
-        />
+        <bookMarkFilmContext.Provider
+          value={{
+            filmsList: this.state.filtredFilms,
+            deleteFilm: this.filmDeleteHandler,
+            editfilmClick: this.editFilmHandler,
+            favoritClicked: this.favoritHandler,
+          }}
+        >
+          <Shell />
+        </bookMarkFilmContext.Provider>
+
         <UpdateContext.Provider
           value={{
             delete: this.deleteFavFilmHandler,

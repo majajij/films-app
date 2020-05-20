@@ -1,19 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import classes from "./films.module.scss";
 import Film from "./film/film";
+import bookMarkFilmContext from "../../../context/filmsContext";
 
 const Films = (props) => {
-  /*const filmClicked = (e) => {
-    console.log(e);
-    props.filmClicked(e);
-  };*/
-  const listFilms = props.filmsList.map((e, i) => (
-    <Film
-      clicked={props.filmClicked}
-      deleteClicked={props.filmDelete}
-      film={e} key={i} 
-      editfilm = {props.editfilmClicked}  
-    />
+  const context = useContext(bookMarkFilmContext);
+
+  const listFilms = context.filmsList.map((e, i) => (
+    <Film clicked={props.filmClicked} film={e} key={i} />
   ));
   return <div className={classes.films}>{listFilms}</div>;
 };

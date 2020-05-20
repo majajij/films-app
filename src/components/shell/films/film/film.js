@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import classes from "./film.module.scss";
 //import Badge from "react-bootstrap/Badge";
 import { FaBookmark, FaTrash } from "react-icons/fa";
@@ -7,17 +7,23 @@ import { BsBookmarkPlus, BsFillEyeFill } from "react-icons/bs";
 import Button from "react-bootstrap/Button";
 import ModalConfirm from "../../../../shared/modalConfirm";
 import ModalAdd from "../../../../shared/modalAddFilm";
+import bookMarkFilmContext from "../../../../context/filmsContext";
 
 const Film = (props) => {
+  // context
+  const context = useContext(bookMarkFilmContext);
   //state model modify
   const [modalShow, setModalShow] = useState(false);
   //const shearchHandeler = (e) => props.change(e.target.value);
-  const submitHandeler = (e) => props.editfilm(e);
+  const submitHandeler = (e) => context.editfilmClick(e);
   //state model confirm alert
   const [modeShow, setModelShow] = useState(false);
 
   const divClick = () => {
     props.clicked(props.film);
+  };
+  const setFav = (e) => {
+    context.favoritClicked({ action: e, idfilm: props.film.id });
   };
 
   const deleteClick = () => {
@@ -29,8 +35,7 @@ const Film = (props) => {
   };
 
   const saveClick = (e) => {
-    //alert(props.film.id);
-    props.deleteClicked(props.film.id);
+    context.deleteFilm(props.film.id);
     setModelShow(false);
   };
 
@@ -41,9 +46,13 @@ const Film = (props) => {
   return (
     <div className={classes.film}>
       {props.film.isFav ? (
-        <FaBookmark className={classes.badge} />
+        <FaBookmark className={classes.badge} onClick={() => setFav(false)} />
       ) : (
-        <BsBookmarkPlus className={classes.badge} style={{ color: "gray" }} />
+        <FaBookmark
+          onClick={() => setFav(true)}
+          className={classes.badge}
+          style={{ color: "gray" }}
+        />
       )}
       <div>
         <div className={classes.button__actions}>
