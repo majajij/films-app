@@ -9,7 +9,7 @@
     background: #1d1f25;
     margin: 1rem;
     transition: all .2s ease-in-out;
-    border-radius: 20px 0 20px;
+    border-radius: 20px 0;
     position: relative;
 
     &:hover {
@@ -45,6 +45,7 @@
         position: absolute;
         bottom: 42%;
         left: 5px;
+
 
         &>button {
             margin: 0.4rem;

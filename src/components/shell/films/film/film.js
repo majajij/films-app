@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import classes from "./film.module.scss";
 //import Badge from "react-bootstrap/Badge";
 import { FaBookmark, FaTrash } from "react-icons/fa";
@@ -14,7 +14,7 @@ const Film = (props) => {
   //const shearchHandeler = (e) => props.change(e.target.value);
   const submitHandeler = (e) => props.editfilm(e);
   //state model confirm alert
-  const [modeShow,setModelShow] = useState(false);
+  const [modeShow, setModelShow] = useState(false);
 
   const divClick = () => {
     props.clicked(props.film);
@@ -22,56 +22,55 @@ const Film = (props) => {
 
   const deleteClick = () => {
     setModelShow(true);
-  }
+  };
 
-  const closeClick = () =>{
+  const closeClick = () => {
     setModelShow(false);
-  }
+  };
 
   const saveClick = (e) => {
     //alert(props.film.id);
     props.deleteClicked(props.film.id);
     setModelShow(false);
-  }
+  };
 
   const EditClick = () => {
     setModalShow(true);
-  }
+  };
 
   return (
     <div className={classes.film}>
       {props.film.isFav ? (
-        <FaBookmark className={classes.badge}/>
-      ) :
-        <BsBookmarkPlus className={classes.badge} style={{ color : 'gray' }}/>
-    
-      }
+        <FaBookmark className={classes.badge} />
+      ) : (
+        <BsBookmarkPlus className={classes.badge} style={{ color: "gray" }} />
+      )}
       <div>
+        <div className={classes.button__actions}>
+          <Button
+            className={classes.button__view}
+            onClick={divClick}
+            variant="primary"
+          >
+            <BsFillEyeFill />
+          </Button>
 
-      <div className={classes.button__actions}>
-        <Button className={classes.button__view} onClick={divClick}
-          variant="primary"
-        >
-          <BsFillEyeFill />
-        </Button>
+          <Button
+            className={classes.button__edit}
+            variant="success"
+            onClick={EditClick}
+          >
+            <AiFillEdit />
+          </Button>
 
-        <Button
-          className={classes.button__edit}
-          variant="success"
-          onClick={EditClick}
-        >
-          <AiFillEdit />
-        </Button>
-
-        <Button 
-          className={classes.button__delete} 
-          onClick={deleteClick}
-          variant="danger"
-        >
-          <FaTrash />
-        </Button>
-      </div>
-      
+          <Button
+            className={classes.button__delete}
+            onClick={deleteClick}
+            variant="danger"
+          >
+            <FaTrash />
+          </Button>
+        </div>
 
         <img src={props.film.img} className={classes.image__header}></img>
       </div>
@@ -91,22 +90,21 @@ const Film = (props) => {
         </div>
       </div>
 
-      <ModalConfirm 
+      <ModalConfirm
         show={modeShow}
-        msg={`Are you sure, you want to delete ${props.film.name} ?`}
+        msg={`Are you sure, you want to delete ( ${props.film.name} ) ?`}
         close={closeClick}
         save={saveClick}
         action={"Delete"}
       />
 
       <ModalAdd
-            action="Edit"
-            dataToModify={props.film}
-            show={modalShow}
-            onHide={() => setModalShow(false)}
-            onSubmitHandler={submitHandeler}
+        action="Edit"
+        dataToModify={props.film}
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        onSubmitHandler={submitHandeler}
       />
-      
     </div>
   );
 };

@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import classes from "./bookmark.module.scss";
 import { FiTrash } from "react-icons/fi";
 import Button from "react-bootstrap/Button";
+import ModalConfirm from "../../../shared/modalConfirm";
+import UpdateContext from "../../../context/context";
+
 const BookMark = (props) => {
+  const [modeShow, setModelShow] = useState(false);
+  const context = useContext(UpdateContext);
   const deleteItem = () => {
-    props.clickDelete(props.data.id);
+    setModelShow(true);
+  };
+  const closeClick = () => {
+    setModelShow(false);
+  };
+
+  const saveClick = (e) => {
+    context.delete(props.data.id);
+    setModelShow(false);
   };
   return (
     <div className={classes.bookmark}>
@@ -28,6 +41,13 @@ const BookMark = (props) => {
         <strong> {props.data.ratting}</strong>
         <span>({props.data.reviews})</span>
       </div>
+      <ModalConfirm
+        show={modeShow}
+        msg={`Are you sure, you want to delete ( ${props.data.name} ) from bookmarks ?`}
+        close={closeClick}
+        save={saveClick}
+        action={"Delete"}
+      />
     </div>
   );
 };
