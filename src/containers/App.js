@@ -30,6 +30,10 @@ class App extends Component {
       films: updatedFilms,
       filtredFilms: updatedFilms,
       favoritFilms: updatedFilms.filter((e) => e.isFav),
+      toast: true,
+      toastTitle: "Deleted Bookmarks",
+      toastMsg: "Film Deleted From Bookmarks Successfully",
+      toastAction: "Success"
     });
   };
   addFilmHandler = (e) => {
@@ -43,8 +47,16 @@ class App extends Component {
           : "https://www.meghnaddesaiacademy.org/wp-content/uploads/2019/12/no-image-available.jpg",
     };
     const dataToSend = [...this.state.films, newFilm];
-    this.setState({ films: dataToSend, filtredFilms: dataToSend });
+    this.setState({ 
+      films: dataToSend,
+      filtredFilms: dataToSend,
+      toast: true,
+      toastTitle: "Add",
+      toastMsg: "Film Added successfully",
+      toastAction: "Success"
+    });
   };
+
   filmSearchHandler = (e) => {
     if (e !== "") {
       const updatedFilms = this.state.films.filter(
@@ -70,8 +82,15 @@ class App extends Component {
   filmDeleteHandler = (e) => {
     const idFIlm = e;
     const updatedFilms = this.state.films.filter((f) => f.id !== idFIlm);
-    this.setState({ films: updatedFilms });
-    this.setState({ filtredFilms: updatedFilms });
+    this.setState({ 
+      films: updatedFilms,
+      filtredFilms: updatedFilms,
+      favoritFilms: updatedFilms.filter((e) => e.isFav),
+      toast: true,
+      toastTitle: "Delete",
+      toastMsg: "Film Deleted successfully",
+      toastAction: "Success"
+    });
   };
   editFilmHandler = (e) => {
     console.log(e);

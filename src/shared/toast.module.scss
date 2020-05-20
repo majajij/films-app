@@ -2,8 +2,9 @@
     position: absolute;
     z-index: 1000;
     color: black;
-    right: 0;
-    bottom: 0;
+    right: 5%;
+    bottom: 10%;
+    animation: myfirst 4s 1;
 }
 
 .toast_success {
@@ -20,3 +21,7 @@
     @extend %toast;
     background-color: sandybrown;
 }
+
+@keyframes myfirst {
+    100% {bottom: 20%;}
+  }
