@@ -1,0 +1,37 @@
+.bookmark {
+  padding: 0;
+  height: 80%;
+  min-width: 18vw;
+  margin: 5px;
+  border-radius: 10px;
+  background-color: #393a46;
+  display: flex;
+  align-items: center;
+  font-size: 10px;
+  position: relative;
+
+  .imgFilms {
+    border-radius: 10%;
+    height: 100%;
+    width: 50px;
+    margin-right: 5px;
+    border-radius: 10px 0 0 10px;
+  }
+
+  b {
+    font-size: small;
+  }
+
+  .button__delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 0 10px;
+    width: 20%;
+    height: 50%;
+  }
+
+  .bookmarkDetail {
+    height: 50px;
+  }
+}

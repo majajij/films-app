@@ -1,0 +1,27 @@
+%toast {
+    position: absolute;
+    z-index: 1000;
+    color: black;
+    right: 5%;
+    bottom: 10%;
+    animation: myfirst 4s 1;
+}
+
+.toast_success {
+    @extend %toast;
+    background-color: lightseagreen;
+}
+
+.toast_error {
+    @extend %toast;
+    background-color: lightcoral;
+}
+
+.toast_warning {
+    @extend %toast;
+    background-color: sandybrown;
+}
+
+@keyframes myfirst {
+    100% {bottom: 20%;}
+  }

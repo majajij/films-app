@@ -1,0 +1,10 @@
+.films {
+    width: 100%;
+    height: 78vh !important;
+    overflow: auto;
+    display: grid;
+    grid-gap: 10px;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(18vw, 1fr));
+}
